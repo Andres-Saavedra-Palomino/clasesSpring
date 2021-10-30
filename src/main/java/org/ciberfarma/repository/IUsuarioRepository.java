@@ -11,7 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface IUsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 	Usuario findByCorreoAndClave(String correo, String clave);
-	
-	@Query(name = "select * from tb_usuarios;", nativeQuery = true )
-  List<Usuario> productoscat();
+
 }

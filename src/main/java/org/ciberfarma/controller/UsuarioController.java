@@ -19,7 +19,6 @@ public class UsuarioController {
 	@GetMapping("/cargar")
 	public String login(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		repo.productoscat();
 		return "login";
 	}
 
