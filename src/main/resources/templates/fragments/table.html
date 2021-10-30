@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>tablas</title>
+</head>
+
+<table class="table table-hover" id="myTable" th:fragment="tabla-producto">
+  <thead>
+    <tr>
+      <th>Imagen</th>
+      <th>Id</th>
+      <th>Descripcion</th>
+      <th>Stock</th>
+      <th>Precio</th>
+      <th>Categoria</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="p: ${lstProductos}">
+    <td><img alt="" width="40px" height="40px" th:src="@{${'/imagenes/productos/'+p.codigo+'.png'}}"></td>
+      <td class="column-id" th:text="${p.codigo}"></td>
+      <td th:text="${p.descripcion}"></td>
+      <td class="column-number" th:text="${p.stock}"></td>
+      <td class="column-number"
+        th:text="${p.precio}"></td>
+      <td class="column-number" th:text="${p.categoria.descripcion}"></td>
+      <td class="column-boton">
+      <form th:action="@{/editar}" method="POST" >
+        <input type="hidden" name="codigo" th:value="${p.codigo}"/>
+        <button type="submit" class="btn verde">Actualizar</button>
+      </form>
+      </td>
+      <td class="column-boton">
+        <button class="btn rojo">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="tabla" th:fragment="tabla-usuario">
+  <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>nombre y Apellido</th>
+      <th>Email/usuario</th>
+      <th>Contraseña</th>
+      <th>Fec. nac.</th>
+      <th>Rol</th>
+      <th>Estado</th>
+      <th></th>
+      <th>
+      <th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="u: ${lstUsuarios}">
+      <td class="column-id" th:text="${u.codigo}"></td>
+      <td th:text="${u.apellido}+', '+${u.nombre}"></td>
+      <td class="column-number" th:text="${u.usuario}"></td>
+      <td class="column-number" th:text="${u.clave}"></td>
+      <td class="column-number" th:text="${u.fnacim}"></td>
+      <td class="column-number" th:text="${u.tipo}"></td>
+      <td class="column-number" th:text="${u.estado}"></td>
+      <td class="column-boton">
+        <button class="btn azul">Actualizar</button>
+      </td>
+      <td class="column-boton">
+        <button class="btn rojo">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

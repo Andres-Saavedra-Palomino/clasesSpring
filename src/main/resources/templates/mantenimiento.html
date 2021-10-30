@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document</title>
+<link rel="stylesheet" href="../css/productos.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div class="menu-icon">
+      <span class="icon icon-menu"></span>
+    </div>
+    <hr />
+    <!-- cambiar <a> a <span> si esta activo -->
+    <nav>
+      <a href="#" class="menu-enlace">Icon tablero</a> 
+      <a href="/usuarios"
+        class="menu-enlace">Icon Usuarios</a> 
+     <a href="/productos" class="menu-enlace">Icon
+        Productos</a>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="cabecera">
+      <div class="pagina-icono">Icon Pagina</div>
+      <div class="pagina-perfil">
+        <button class="btn btn-profile" onclick="dropSetting()">
+          <div class="icon icon-profile"></div>
+
+          <!-- Get username -->
+          <span class="nombre-profile">Nombre Apellido</span>
+          <div class="icon icon-darrow"></div>
+        </button>
+        <div id="drop" class="profile-drop invisible">
+          <button class="btn" onclick="console.log('click')">modo opaco</button>
+          <button class="btn">cerrar sesion</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Obtener nombre de la tabla -->
+    <div class="titulo">
+      <h2>Titulo</h2>
+    </div>
+
+    <div class="contenido">
+      <a class="btn-agregar" href="/cargar">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+<path d="M12 5V19" stroke="#fff" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+<path d="M5 12H19" stroke="#fff" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+</svg>
+      </a>
+      <div class="tabla-contenedor">
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th class="column-id" th:each="c: ${cabeceras}" th:text="${c}"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="r: ${rows}">
+              <td class="column-id" th:each="e: ${r}" th:text="${e}"></td>
+              <td class="column-boton">
+                <button class="btn">Actualizar</button>
+              </td>
+              <td class="column-boton">
+                <button class="btn">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="paginacion">
+        <!-- Obtener paginacion -->
+        <div>articulos por página 8</div>
+        <div>1 - 8 de 12</div>
+        <div>
+          <a href="#" class="icon flecha-inicio">&nbsp|<&nbsp</a> <a href="#"
+            class="icon flecha-atras">&nbsp<&nbsp</a> <a href="#"
+            class="icon flecha-adelante">&nbsp>&nbsp </a> <a href="#"
+            class="icon flecha-ultima">&nbsp>|&nbsp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+	let drop = document.getElementById("drop");
+	function dropSetting() {
+		drop.classList.toggle("invisible");
+	}
+	window.onclick = function(event) {
+		if (!(event.target.matches("button.btn.btn-profile")
+				|| event.target.matches("span.nombre-profile")
+				|| event.target.matches("div.icon.icon-profile") || event.target
+				.matches("div.icon.icon-darrow")))
+			drop.classList.add("invisible");
+	};
+</script>
+</html>
