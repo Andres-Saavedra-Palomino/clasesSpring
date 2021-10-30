@@ -14,6 +14,9 @@
 
 <body>
   <div class="container">
+  <header th:replace="principal::header"></header>
+  <nav th:replace="principal::nav"></nav>
+  <section style="margin-left:20%;width:60%;">
     <h1>Producto</h1>
     <form class="m-3" method="POST" action="/grabar" th:object="${producto}">
       <div class="form-group">
@@ -62,6 +65,7 @@
       <button type="submit" class="btn btn-primary">Registrar</button>
       <a href="/listar" class="btn btn-primary">Listado</a>
     </form>
+    </section>
   </div>
 </body>
 
