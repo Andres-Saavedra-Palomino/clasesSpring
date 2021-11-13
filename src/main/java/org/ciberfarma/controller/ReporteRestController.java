@@ -24,7 +24,7 @@ public class ReporteRestController {
 	@Autowired
 	private DataSource dataSource;
 
-	@RequestMapping("/{reportName}")
+	@RequestMapping("reportes/{reportName}")
 	public void demoReport1(@PathVariable("reportName") final String reportName,
 			@RequestParam(required = false) Map<String, Object> parameters, HttpServletResponse response,
 			HttpServletRequest request) throws Exception {
