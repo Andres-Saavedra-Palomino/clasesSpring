@@ -101,4 +101,6 @@ public class ProductoController {
 		model.addAttribute("cabeceras", cabeceras);		
 		return "mantenimiento";
 	}
+
+	
 }
